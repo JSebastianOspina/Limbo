@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSoftwareLicencesTable extends Migration
+class CreateSoftwareLicensesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateSoftwareLicencesTable extends Migration
      */
     public function up()
     {
-        Schema::create('software_licences', function (Blueprint $table) {
+        Schema::create('software_licenses', function (Blueprint $table) {
             $table->id();
             //Columnas de la tabla de software
             $table->date('purchase_date');
@@ -25,7 +25,7 @@ class CreateSoftwareLicencesTable extends Migration
             $table->enum('type',['renovated','perpetual']);
             $table->string('version');
             $table->foreignId('software_id')->nullable();
-            $table->foreign('software_id')->references('id')->on('softwares')->nullOnDelete();
+            $table->foreign('software_id')->references('id')->on('software')->nullOnDelete();
             $table->string('activation_key');
             $table->integer('total_licences');
             $table->foreignId('champion_id')->nullable();
@@ -41,6 +41,6 @@ class CreateSoftwareLicencesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('software_licences');
+        Schema::dropIfExists('software_licenses');
     }
 }

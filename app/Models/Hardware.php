@@ -23,4 +23,8 @@ class Hardware extends Model
     {
         return $this->belongsToMany(Software::class)->withPivot(['installation_date', 'remove_date', 'renovation_date']);
     }
+    public function softwareLicenses(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(SoftwareLicense::class);
+    }
 }

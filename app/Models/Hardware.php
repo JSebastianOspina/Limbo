@@ -21,6 +21,6 @@ class Hardware extends Model
 
     public function software(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMan(Software::class)->withPivot(['installation_date', 'remove_date', 'renovation_date']);
+        return $this->belongsToMany(Software::class)->withPivot(['installation_date', 'remove_date', 'renovation_date']);
     }
 }

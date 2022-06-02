@@ -11,11 +11,11 @@ class Champion extends Model
 
     public function softwareLicenses(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(SoftwareLicense::class);
+        return $this->belongsToMany(SoftwareLicense::class)->withPivot(['installation_date', 'remove_date', 'renovation_date']);
     }
 
     public function hardware(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(Hardware::class);
+        return $this->belongsToMany(Hardware::class)->withPivot(['assignation_date','remove_date']);
     }
 }

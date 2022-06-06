@@ -19,4 +19,9 @@ class SoftwareLicense extends Model
         return $this->belongsToMany(Champion::class);
     }
 
+    public function hardware(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Hardware::class)->withPivot(['installation_date', 'remove_date', 'renovation_date']);
+    }
+
 }
